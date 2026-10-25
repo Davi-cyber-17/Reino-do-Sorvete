@@ -1,0 +1,54 @@
+*{box-sizing:border-box;touch-action:manipulation;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none}
+:root{--c:#00e5ff;--p:#7b4dff;--bg:#050816}
+html,body{margin:0;min-height:100%;overscroll-behavior:none}
+body{min-height:100dvh;color:#d9f6ff;font-family:Orbitron,'Segoe UI',system-ui,sans-serif;display:flex;justify-content:center;align-items:center;
+ background:radial-gradient(circle at 50% 0,#14206a55,transparent 60%),linear-gradient(rgba(0,229,255,.05) 1px,transparent 1px) 0 0/32px 32px,linear-gradient(90deg,rgba(0,229,255,.05) 1px,transparent 1px) 0 0/32px 32px,var(--bg)}
+.screen{display:none;flex-direction:column;align-items:center;gap:14px;padding:18px;text-align:center;width:100%;max-width:640px}
+.screen.on{display:flex}
+h1{font-size:clamp(2rem,9vw,3.2rem);margin:0 0 10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c);text-shadow:0 0 12px var(--c),0 0 32px var(--p)}
+h2{margin:0;letter-spacing:.1em;text-transform:uppercase;color:var(--c);text-shadow:0 0 10px var(--c)}
+button,input{font:inherit;font-size:1rem;padding:13px 24px;border-radius:10px;border:2px solid var(--c);background:#0a1233cc;color:var(--c);font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 0 10px #00e5ff55,inset 0 0 10px #00e5ff22;transition:.15s}
+button:hover{background:#00e5ff22;box-shadow:0 0 20px var(--c)}
+button:active{transform:scale(.96);background:#00e5ff44}
+#menu button,#online>button,#lobby>button{min-width:min(78vw,280px)}
+input{width:130px;text-align:center;cursor:text;color:#fff;border-color:var(--p);box-shadow:0 0 10px #7b4dff66}
+.row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.hint{font-size:.8rem;line-height:1.7;color:#8fb4d9;font-family:system-ui,sans-serif}
+#onMsg,#lp{color:#ff4fd8;min-height:1.2em;font-size:.9rem}
+#rc{color:#fff;text-shadow:0 0 12px var(--p)}
+#game{padding:6px;gap:6px;max-width:none}
+#hud{display:flex;gap:8px 14px;align-items:center;justify-content:space-between;flex-wrap:wrap;width:100%;max-width:640px;background:#0a1233cc;border:1px solid var(--p);box-shadow:0 0 14px #7b4dff66;color:var(--c);padding:6px 10px;border-radius:10px;font-weight:700;font-size:.8rem}
+#hud button{padding:4px 12px;font-size:.75rem}
+#hS b{margin-left:8px;text-shadow:0 0 6px currentColor}
+#c{width:min(100%,640px,calc((100dvh - 130px)*1.1538));height:auto;border:2px solid var(--c);border-radius:10px;background:#070b1f;box-shadow:0 0 24px #00e5ff66,0 0 60px #7b4dff44}
+#pad{display:none;width:100%;max-width:640px;justify-content:space-between;align-items:center;padding:4px 10px}
+.touch #pad{display:flex}
+.touch #c{width:min(100%,640px,calc((100dvh - 290px)*1.1538))}
+#dpad{display:grid;grid-template:repeat(3,56px)/repeat(3,56px);gap:4px}
+#dpad button,#pad .act{padding:0;font-size:1.4rem;border-radius:14px;box-shadow:0 0 12px #00e5ff66}
+#dpad [data-d="0"]{grid-area:1/2}#dpad [data-d="1"]{grid-area:2/1}#dpad [data-d="3"]{grid-area:2/3}#dpad [data-d="2"]{grid-area:3/2}
+#pad .act{width:96px;height:96px;border-radius:50%;border-color:var(--p);color:#fff;font-size:2rem;box-shadow:0 0 18px var(--p)}
+@media (orientation:landscape) and (max-height:520px){
+ .touch #c{width:min(100%,calc((100dvh - 60px)*1.1538))}
+ .touch #pad{position:fixed;left:0;right:0;bottom:6px;pointer-events:none;opacity:.6}
+ .touch #pad button{pointer-events:auto}
+}
+
+/* ---------- v2: visual aprimorado ---------- */
+body{animation:bgmove 40s linear infinite}
+@keyframes bgmove{to{background-position:0 0,32px 32px,32px 32px,0 0}}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(transparent 0 2px,rgba(0,0,0,.14) 2px 3px);mix-blend-mode:multiply}
+h1{animation:flick 5s infinite}
+@keyframes flick{0%,92%,100%{opacity:1}93%{opacity:.6}95%{opacity:1}97%{opacity:.7}}
+.sub{margin:-8px 0 8px;font-size:.7rem;letter-spacing:.2em;color:#ff4fd8;text-transform:uppercase}
+.screen.on{animation:in .35s ease-out}
+@keyframes in{from{opacity:0;transform:translateY(12px)}}
+button{background:linear-gradient(180deg,#0e1a4acc,#0a1233cc)}
+button:hover{transform:translateY(-2px)}
+#hud{backdrop-filter:blur(6px)}
+#hS{display:flex;gap:6px;flex-wrap:wrap}
+#hS b{margin:0;padding:3px 8px;border-radius:8px;border:1px solid var(--k);background:#ffffff0d;color:var(--k);box-shadow:0 0 8px var(--k);font-size:.72rem}
+#hS b u{text-decoration:none;margin-left:4px;color:#ff4f6d}
+#hT.low{color:#ff2e63;animation:blink .5s infinite}
+@keyframes blink{50%{opacity:.3}}
+#bMute{padding:4px 10px;font-size:.75rem}

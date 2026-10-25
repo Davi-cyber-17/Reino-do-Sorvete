@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Reino do Sorvete</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="menu" class="screen on">
+  <h1>Reino do Sorvete</h1>
+  <p class="sub">// arena neon · congele · quebre · colete //</p>
+  <button id="bLocal">Modo Local</button>
+  <button id="bOnline">Modo Online</button>
+</div>
+
+<div id="local" class="screen">
+  <h2>Quantos jogadores?</h2>
+  <div class="row">
+    <button data-n="1">1</button><button data-n="2">2</button>
+    <button data-n="3">3</button><button data-n="4">4</button>
+  </div>
+  <p class="hint">J1: WASD + Espaço<br>J2: Setas + Enter<br>J3: T F G H + R<br>J4: I J K L + U</p>
+  <button class="back">Voltar</button>
+</div>
+
+<div id="online" class="screen">
+  <h2>Modo Online</h2>
+  <button id="bCreate">Criar sala</button>
+  <div class="row"><input id="code" maxlength="4" inputmode="numeric" placeholder="Código"><button id="bJoin">Entrar</button></div>
+  <p class="hint">Funciona entre dispositivos: PC (WASD/Setas + Espaço) e celular (botões na tela) na mesma sala.</p>
+  <p id="onMsg"></p>
+  <button class="back">Voltar</button>
+</div>
+
+<div id="lobby" class="screen">
+  <h2>Sala <span id="rc"></span></h2>
+  <p id="lp"></p>
+  <button id="bStart">Iniciar jogo</button>
+  <button class="back">Sair</button>
+</div>
+
+<div id="game" class="screen">
+  <div id="hud"><span id="hT"></span><span id="hL"></span><span id="hS"></span><button id="bMute">🔊</button><button class="back">Sair</button></div>
+  <canvas id="c" width="600" height="520"></canvas>
+  <div id="pad">
+    <div id="dpad"><button data-d="0">▲</button><button data-d="1">◀</button><button data-d="3">▶</button><button data-d="2">▼</button></div>
+    <button data-a="1" class="act">❄</button>
+  </div>
+</div>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
